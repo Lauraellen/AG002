@@ -2,12 +2,9 @@
 import pandas as pd
 from sqlalchemy import create_engine
 import numpy as np
-import matplotlib.pyplot as plt
 
 ### Criação do modelo
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 
 ### Avaliação de métricas
