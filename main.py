@@ -23,7 +23,6 @@ tree = DecisionTreeClassifier()
 ## Variáveis preditoras
 X = df.loc[:, ["age", "menopause", "tumor-size", "inv-nodes", "node-caps", "deg-malig", "breast", "breast-quad", "irradiat"]].values
 X = np.array(X)
-print(X)
 
 ## Variável alvo
 y = df.loc[:, ["class"]].values
@@ -38,7 +37,6 @@ print(f"Tamanho y de teste: {y_test.shape}")
 
 # Treinando modelos
 tree.fit(X_train, y_train)
-print(X_test)
 tree_predict = tree.predict(X_test)
 
 tree_score = accuracy_score(y_test, tree_predict)
@@ -46,15 +44,15 @@ print(f"Pontuação Decision Tree:{tree_score}")
 
 
 print("Entre com os dados para verificar a chace de recorrência da doença após o tratamento:")
-age = input("Entre com a idade da paciente:")
-menopause = input("Com relação a menopausa da paciente, selecione uma das opções: 1 - Menopausa antes dos 40 2 - Menopausa depois dos 40 3 - Pré Menopausa")
-tumorSize = input("Indique a faixa do diâmetro do tumor em mm:")
-invNodes = input("Indique o número de linfonodos axilares:")
-nodeCaps = input("Informe se há penetração do tumor na cápsula do linfonodo:")
-degMalig = input("Informe o grau de malignidade do tumor: 1 - Menor 2 - Médio 3 - Maior")
-breast = input("Informe a mama: 1 - Esquerda 2 - Direita")
-breastQuad = input("Informe o quadrante da mama afetado: 1 - esquerda-cima 2 - esquerda-baixo 3 - direita - cima 4 - direita - baixo 5 - centro")
-irradiat = input("Há histórico de radioterapia? 1 - Não 2- Sim")
+age = int(input("Entre com a idade da paciente:\n"))
+menopause = int(input("Com relação a menopausa da paciente, selecione uma das opções: 1 - Menopausa antes dos 40 2 - Menopausa depois dos 40 3 - Pré Menopausa\n"))
+tumorSize = int(input("Indique a faixa do diâmetro do tumor em mm:\n"))
+invNodes = int(input("Indique o número de linfonodos axilares:\n"))
+nodeCaps = int(input("Informe se há penetração do tumor na cápsula do linfonodo: 1 - Não 2 - Sim\n"))
+degMalig = int(input("Informe o grau de malignidade do tumor: 1 - Menor 2 - Médio 3 - Maior\n"))
+breast = int(input("Informe a mama: 1 - Esquerda 2 - Direita\n"))
+breastQuad = int(input("Informe o quadrante da mama afetado: 1 - esquerda-cima 2 - esquerda-baixo 3 - direita - cima 4 - direita - baixo 5 - centro\n"))
+irradiat = int(input("Há histórico de radioterapia? 1 - Não 2 - Sim\n"))
 
 ageValue = 0
 if age >= 10 and age <= 19:
@@ -134,6 +132,6 @@ elif invNodes >= 36 and invNodes <= 39:
 dados = [[ageValue, menopause, tumorSizeValue, invNodesValue, nodeCaps, degMalig, breast, breastQuad, irradiat]]
 resposta = tree.predict(dados)
 if resposta == 1:
-    print("Não é chances de recorrência da doença após o tratamento.")
+    print("Não há chances de recorrência da doença após o tratamento.")
 elif resposta == 2:
     print("Há chances de recorrência da doença após o tratamento.")
